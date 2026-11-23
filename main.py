@@ -18,8 +18,8 @@ d.open_path(target_path)
 # Send 9 pages (0x00 to 0x08) with leading Report ID 0x00 (65 bytes total!)
 for page in range(9):
     header = bytes([0x00, 0x05, 0x04, 0x00, page])  # Report ID 0x00 + 05 04 00 <page>
-    # 15 LEDs * (RR GG BB FF) -> Solid Pure Blue (00 00 FF FF)
-    leds = bytes([0x00, 0x00, 0xFF, 0xFF]) * 15
+    # green blue red
+    leds = bytes([0x00, 0xFF, 0x00, 0xFF]) * 15
     written = d.write(header + leds)
     print(f"Page {page}: wrote {written} bytes")
 
