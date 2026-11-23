@@ -19,6 +19,7 @@ d.open_path(target_path)
 for page in range(9):
     header = bytes([0x00, 0x05, 0x04, 0x00, page])  # Report ID 0x00 + 05 04 00 <page>
     # green blue red
+    # the 4 0xFF doesn't seem to do anything
     leds = bytes([0x00, 0xFF, 0x00, 0xFF]) * 15
     written = d.write(header + leds)
     print(f"Page {page}: wrote {written} bytes")
